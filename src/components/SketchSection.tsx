@@ -31,10 +31,12 @@ const workImages = [
 
 export default function WorkSection() {
   return (
-    <section className="w-full max-w-5xl mx-auto py-12 px-4">
+    <section id="sketch" className="w-full max-w-5xl mx-auto py-12 px-4">
       <h2 className="text-2xl font-semibold mb-2">Sketches</h2>
       <p className="mb-6 text-gray-500">
-        Something motivational or that will make people buy
+        A hand-drawn portrait is a gift of emotion—a way to cherish the people
+        and moments that matter most. See how your story can come to life on
+        paper.
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
         {workImages.map((img, i) => (

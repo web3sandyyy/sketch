@@ -12,22 +12,21 @@ export default function MehendiCarousel({ images }: { images: any[] }) {
   return (
     <div className="w-full">
       <Carousel className="w-full" opts={{ align: "start" }}>
-        <CarouselContent className="">
+        <CarouselContent className="-ml-4">
           {images.map((img, idx) => (
-            <CarouselItem
-              key={idx}
-              className="basis-1/3"
-            >
+            <CarouselItem key={idx} className="pl-4 basis-[60%] sm:basis-[40%]">
+              <div className="p-1">
                 <Image
                   src={img}
                   alt={`Mehendi ${idx + 1}`}
-                  className="object-cover w-fit aspect-square rounded-xl overflow-hidden shadow-lg"
+                  className="object-cover w-full aspect-square rounded-xl overflow-hidden shadow-lg"
                 />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
       </Carousel>
     </div>
   );

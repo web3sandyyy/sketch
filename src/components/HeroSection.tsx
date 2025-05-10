@@ -18,11 +18,16 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-white/70 z-10" />
       <div className="relative z-20 h-[calc(100dvh-88px)] w-full flex justify-center items-center">
         <div className="flex flex-col items-center gap-6 -mt-10">
-          <h1 className="text-3xl sm:text-5xl font-bold text-center">
-            Get yourself a Portrait
+          <h1 className="text-2xl sm:text-4xl font-bold text-center">
+            Immortalize Your Memories with a Hand-Drawn Portrait
           </h1>
+          <p className="text-lg text-center text-gray-700 max-w-xl">
+            Every face tells a story. Let Anu capture yours with warmth, detail,
+            and heart. A custom sketch is more than a picture—it's a memory you
+            can hold forever.
+          </p>
           <Button className="flex items-center gap-2 px-6 py-3 text-lg bg-gray-900 text-white hover:bg-gray-700 rounded-full shadow-lg">
-            <MessageCircle size={20} /> Contact us
+            <MessageCircle size={20} /> Connect
           </Button>
         </div>
       </div>

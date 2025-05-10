@@ -2,27 +2,27 @@ import { MessageCircle } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Some name",
+    name: "Priya Sharma",
     review:
-      "Lorem review, will add some review, will add some review, will add some review, will add some review.",
+      "Anu's portrait of my grandparents brought tears to our eyes. She captured their warmth and love so beautifully. This sketch is now a family treasure!",
   },
   {
-    name: "Some name",
+    name: "Rahul Mehta",
     review:
-      "Lorem review, will add some review, will add some review, will add some review, will add some review.",
+      "I gifted my wife a hand-drawn portrait for our anniversary. Anu's attention to detail and ability to capture emotion is incredible. Highly recommended!",
   },
   {
-    name: "Some name",
+    name: "Sonal Verma",
     review:
-      "Lorem review, will add some review, will add some review, will add some review, will add some review.",
+      "The mehendi design Anu created for my wedding was stunning and unique. She listened to my ideas and made them even better. Thank you for making my day extra special!",
   },
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section className="w-full max-w-5xl mx-auto py-12 px-4">
+    <section id="testimonials" className="w-full max-w-5xl mx-auto py-12 px-4">
       <h2 className="text-2xl font-semibold mb-2">Testimonials</h2>
-      <p className="mb-6 text-gray-500">Review of my customer</p>
+      <p className="mb-6 text-gray-500">What my clients say</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (
           <div
