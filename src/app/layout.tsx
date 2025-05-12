@@ -69,9 +69,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-site-verification",
-  },
 };
 
 export default function RootLayout({
@@ -82,10 +79,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" type="image/png" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       <body
         className={`${poppins.variable} ${lexendDeca.variable} antialiased`}
@@ -106,13 +102,8 @@ export default function RootLayout({
                 "@type": "PostalAddress",
                 addressCountry: "IN",
               },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: "YOUR_LATITUDE",
-                longitude: "YOUR_LONGITUDE",
-              },
               url: "https://anusketchart.com",
-              telephone: "+919826000000",
+              telephone: "+9152345333",
               priceRange: "₹₹",
               openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",
@@ -128,8 +119,8 @@ export default function RootLayout({
                 closes: "19:00",
               },
               sameAs: [
-                "https://www.instagram.com/your_instagram_handle",
-                "https://wa.me/919826000000",
+                "https://www.instagram.com/anusketchart/",
+                "https://wa.me/9152345333",
               ],
             }),
           }}

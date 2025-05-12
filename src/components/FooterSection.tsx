@@ -3,7 +3,7 @@ import { Instagram, MessageCircle } from "lucide-react";
 export default function FooterSection() {
   return (
     <>
-      <div className="w-full py-8 text-center text-lg font-medium text-gray-700">
+      <div className="w-full py-8 text-center text-lg font-medium text-gray-700 px-4 md:px-0">
         Transform your ideas into stunning digital art with our expert sketching
         services. Get started today and bring your vision to life!
       </div>
