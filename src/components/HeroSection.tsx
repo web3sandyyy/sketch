@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import Header from "./Header";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -16,7 +17,7 @@ export default function HeroSection() {
         <source src="/assets/drawing1.mp4" type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-white/70 z-10" />
+      <div className="absolute inset-0 bg-white/60 z-10" />
       <div className="relative z-20 h-[calc(100dvh-88px)] w-full flex justify-center items-center">
         <div className="flex flex-col items-center gap-6 -mt-10">
           <h1 className="text-2xl sm:text-4xl font-bold text-center">
@@ -27,9 +28,14 @@ export default function HeroSection() {
             and heart. A custom sketch is more than a picture—it's a memory you
             can hold forever.
           </p>
-          <Button className="flex items-center gap-2 px-6 py-3 text-lg bg-gray-900 text-white hover:bg-gray-700 rounded-full shadow-lg">
+          <Link
+            href={"https://wa.me/9152345333"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-6 py-3 text-lg bg-gray-900 text-white hover:bg-gray-700 rounded-full shadow-lg"
+          >
             <MessageCircle size={20} /> Connect
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

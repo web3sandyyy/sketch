@@ -18,6 +18,7 @@ export default function FlippableImage({
   flipDuration?: number;
 }) {
   const [flipped, setFlipped] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const startTimeRef = useRef(Date.now());
   const lastIndexRef = useRef(-1);
   const manuallyFlippedRef = useRef(false);
@@ -37,6 +38,7 @@ export default function FlippableImage({
       const currentIndex = Math.floor(cyclePosition);
 
       if (currentIndex !== lastIndexRef.current) {
+        setCurrentIndex(currentIndex);
         if (currentIndex === index) {
           if (manuallyFlippedRef.current) {
             setFlipped(false);
@@ -108,7 +110,10 @@ export default function FlippableImage({
         className="absolute top-2 right-2 bg-white/80 rounded-full p-1 shadow cursor-pointer hover:bg-white/90"
         onClick={handleManualFlip}
       >
-        <RefreshCw size={16} className="animate-spin-slow" />
+        <RefreshCw
+          size={16}
+          className={`${currentIndex === index ? "rotate-360 duration-3000 ease-in-out transition-transform" : ""}`}
+        />
       </div>
     </div>
   );

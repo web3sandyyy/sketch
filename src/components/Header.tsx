@@ -100,7 +100,7 @@ export default function Header() {
         {/* Desktop Social Icons */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://wa.me/919826000000"
+            href="https://wa.me/9152345333"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
@@ -108,7 +108,7 @@ export default function Header() {
             <Phone size={24} />
           </a>
           <a
-            href="https://www.instagram.com/your_instagram_handle"
+            href="https://www.instagram.com/anusketchart/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
@@ -166,7 +166,7 @@ export default function Header() {
           {/* Social Icons - Bottom of Sidebar */}
           <div className="mt-auto pt-6 border-t">
             <a
-              href="https://www.instagram.com/your_instagram_handle"
+              href="https://www.instagram.com/anusketchart/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors"

@@ -10,7 +10,7 @@ export default function FooterSection() {
       <footer className="w-full py-4 flex flex-col sm:flex-row items-center justify-between px-4 text-gray-400 text-sm border-t bg-white/80">
         <div className="flex items-center gap-4">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/anusketchart/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
@@ -19,7 +19,7 @@ export default function FooterSection() {
             <Instagram className="inline ml-1" size={18} />
           </a>
           <a
-            href="https://wa.me"
+            href="https://wa.me/9152345333"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
