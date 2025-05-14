@@ -8,29 +8,8 @@ export default function FooterSection() {
         services. Get started today and bring your vision to life!
       </div>
       <footer className="w-full py-4 flex flex-col sm:flex-row items-center justify-between px-4 text-gray-400 text-sm border-t bg-white/80">
-        <div className="flex items-center gap-4">
-          <a
-            href="https://www.instagram.com/anusketchart/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-600 transition-colors"
-          >
-            Follow us on Instagram{" "}
-            <Instagram className="inline ml-1" size={18} />
-          </a>
-          <a
-            href="https://wa.me/9152345333"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-600 transition-colors"
-          >
-            Chat on WhatsApp <MessageCircle className="inline ml-1" size={18} />
-          </a>
-        </div>
-        <div className="mt-2 sm:mt-0">
-          &copy; {new Date().getFullYear()} Anusketchart - Your Digital Art
-          Partner
-        </div>
+        &copy; {new Date().getFullYear()} Anusketchart - Your Digital Art
+        Partner
       </footer>
     </>
   );

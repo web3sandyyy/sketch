@@ -21,7 +21,7 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="w-full max-w-5xl mx-auto py-12 px-4">
-      <h2 className="text-2xl font-semibold mb-2">Testimonials</h2>
+      <h2 className="text-2xl font-semibold mb-2">Reviews</h2>
       <p className="mb-6 text-gray-500">What my clients say</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (

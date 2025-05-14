@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { Phone, Instagram, Menu, X } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import whatsappIcon from "@/assets/icons/whatsapp.svg";
+import instagramIcon from "@/assets/icons/instagram.svg";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +38,7 @@ export default function Header() {
       sectionId: "sketch",
     },
     {
-      label: "Mehendi",
+      label: "Canvas",
       sectionId: "mehendi",
     },
     {
@@ -98,14 +99,14 @@ export default function Header() {
         </div>
 
         {/* Desktop Social Icons */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-2">
           <a
             href="https://wa.me/9152345333"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
           >
-            <Phone size={24} />
+            <Image src={whatsappIcon} alt="WhatsApp" width={30} height={30} />
           </a>
           <a
             href="https://www.instagram.com/anusketchart/"
@@ -113,7 +114,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
           >
-            <Instagram size={24} />
+            <Image src={instagramIcon} alt="Instagram" width={30} height={30} />
           </a>
         </div>
       </header>

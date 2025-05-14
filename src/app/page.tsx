@@ -4,7 +4,7 @@ import MehendiSection from "@/components/MehendiSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FooterSection from "@/components/FooterSection";
 import Header from "@/components/Header";
-import FloatingWhatsapp from "@/components/FloatingWhatsapp";
+import FloatingButtons from "@/components/FloatingWhatsapp";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <MehendiSection />
         <TestimonialsSection />
         <FooterSection />
-        <FloatingWhatsapp />
+        <FloatingButtons />
       </div>
     </div>
   );

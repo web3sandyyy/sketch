@@ -1,7 +1,7 @@
 import FlippableImage from "./FlippableImage";
 import sketch from "@/assets/sketch.jpeg";
 import original from "@/assets/original-sketch.jpeg";
-
+import SketchCarousel from "./SketchCarousel";
 const workImages = [
   {
     sketch: sketch,
@@ -29,6 +29,8 @@ const workImages = [
   },
 ];
 
+const sketchImages = [sketch, sketch, sketch, sketch, sketch, sketch];
+
 export default function WorkSection() {
   return (
     <section id="sketch" className="w-full max-w-5xl mx-auto py-12 px-4">
@@ -50,6 +52,9 @@ export default function WorkSection() {
           />
         ))}
       </div>
+      <hr className="my-6 md:my-8 border-t-2 border-gray-200" />
+      <SketchCarousel images={sketchImages} />
+
     </section>
   );
 }
