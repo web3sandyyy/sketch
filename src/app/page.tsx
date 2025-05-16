@@ -5,6 +5,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FooterSection from "@/components/FooterSection";
 import Header from "@/components/Header";
 import FloatingButtons from "@/components/FloatingWhatsapp";
+import Classes from "@/components/Classes";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <HeroSection />
         <SketchSection />
         <MehendiSection />
+        <Classes />
         <TestimonialsSection />
         <FooterSection />
         <FloatingButtons />

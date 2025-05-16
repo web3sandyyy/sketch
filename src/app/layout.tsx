@@ -82,6 +82,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" type="image/png" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="preload" href="/classesBg.jpg" as="image" />
       </head>
       <body
         className={`${poppins.variable} ${lexendDeca.variable} antialiased`}
