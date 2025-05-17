@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Phone, Instagram, Menu, X } from "lucide-react";
+import { Instagram, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import whatsappIcon from "@/assets/icons/whatsapp.svg";
 import instagramIcon from "@/assets/icons/instagram.svg";
+import { instagramUrl, phoneNumber } from "@/config";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -101,7 +102,7 @@ export default function Header() {
         {/* Desktop Social Icons */}
         <div className="hidden md:flex items-center gap-2">
           <a
-            href="https://wa.me/9152345333"
+            href={phoneNumber}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
@@ -109,7 +110,7 @@ export default function Header() {
             <Image src={whatsappIcon} alt="WhatsApp" width={30} height={30} />
           </a>
           <a
-            href="https://www.instagram.com/anusketchart/"
+            href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600 transition-colors"
@@ -167,7 +168,7 @@ export default function Header() {
           {/* Social Icons - Bottom of Sidebar */}
           <div className="mt-auto pt-6 border-t">
             <a
-              href="https://www.instagram.com/anusketchart/"
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors"

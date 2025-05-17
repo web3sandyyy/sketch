@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
+import { uploadImage } from "@/utils/supabase/storage";
 
 type CarouselItem = {
   id: number;
@@ -13,6 +14,7 @@ type CarouselItem = {
 export default function AdminDashboard() {
   const router = useRouter();
   const [todos, setTodos] = useState<CarouselItem[]>([]);
+  const [image, setImage] = useState<File | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +34,12 @@ export default function AdminDashboard() {
     router.push("/admin");
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(file);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
@@ -54,6 +62,11 @@ export default function AdminDashboard() {
               </pre>
             </div>
           )}
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-2">Upload Image</h2>
+          <input type="file" onChange={handleImageUpload} />
+          <button onClick={() => uploadImage({ file: image, folder: "canvasCarousel" })}>Upload</button>
         </div>
       </div>
     </div>

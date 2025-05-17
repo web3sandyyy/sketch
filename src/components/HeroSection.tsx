@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
-import Header from "./Header";
 import Link from "next/link";
+import { phoneNumber } from "@/config";
 
 export default function HeroSection() {
   return (
@@ -29,7 +28,7 @@ export default function HeroSection() {
             can hold forever.
           </p>
           <Link
-            href={"https://wa.me/9152345333"}
+            href={phoneNumber}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 text-lg bg-gray-900 text-white hover:bg-gray-700 rounded-full shadow-lg"

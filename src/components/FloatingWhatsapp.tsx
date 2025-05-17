@@ -5,6 +5,7 @@ import React from "react";
 import Image from "next/image";
 import whatsapp from "@/assets/whatsapp.png";
 import instagram from "@/assets/instagram.png";
+import { instagramUrl, phoneNumber } from "@/config";
 
 // Reusable floating button component
 const FloatingButton = ({
@@ -58,7 +59,7 @@ const FloatingButtons = () => {
   return (
     <div className="fixed bottom-0 right-0 m-4 z-50 flex flex-col gap-2 items-end">
       <FloatingButton
-        href="https://instagram.com/yourprofile" // TODO: Replace with actual Instagram link
+        href={instagramUrl}
         image={instagram}
         alt="Instagram"
         label="Follow us"
@@ -66,7 +67,7 @@ const FloatingButtons = () => {
         style={{ marginBottom: 12 }}
       />
       <FloatingButton
-        href="https://wa.me/9152345333"
+        href={phoneNumber}
         image={whatsapp}
         alt="WhatsApp"
         label="Contact now"
