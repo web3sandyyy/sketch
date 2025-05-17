@@ -2,9 +2,30 @@
 
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
+
+type CarouselItem = {
+  id: number;
+  [key: string]: any;
+};
 
 export default function AdminDashboard() {
   const router = useRouter();
+  const [todos, setTodos] = useState<CarouselItem[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase.from("canvascarousel").select("*");
+      if (data) {
+        setTodos(data);
+        console.log(data);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleLogout = () => {
     Cookies.remove("authorized");
@@ -25,6 +46,14 @@ export default function AdminDashboard() {
         </div>
         <div className="bg-white rounded-lg shadow p-6">
           <p className="text-gray-600">Welcome to the admin dashboard!</p>
+          {todos && (
+            <div className="mt-4">
+              <h2 className="text-xl font-semibold mb-2">Carousel Items:</h2>
+              <pre className="bg-gray-100 p-4 rounded">
+                {JSON.stringify(todos, null, 2)}
+              </pre>
+            </div>
+          )}
         </div>
       </div>
     </div>
