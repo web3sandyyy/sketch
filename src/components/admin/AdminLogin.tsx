@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import Cookies from "js-cookie";
 import { motion } from "framer-motion";
+import { verifyAdmin } from "@/utils/supabase/apis";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
@@ -22,21 +23,26 @@ const AdminLogin = () => {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
 
-    // Simple login logic - in a real app, this would call an API
-    setTimeout(() => {
-      if (username === "admin" && password === "password") {
-        Cookies.set("authorized", "true", { expires: 1 }); // 1 day
-        router.push("/admin/dashboard");
-      } else {
-        setError("Invalid username or password");
-        setIsLoading(false);
-      }
-    }, 1500);
+    const { error, data } = await verifyAdmin(username, password);
+    if (error) {
+      setError(error);
+      setIsLoading(false);
+      return;
+
+    }
+
+    if (data?.length && data.length > 0) {
+      Cookies.set("authorized", "true", { expires: 30 }); // 30 days
+      router.push("/admin/dashboard");
+    } else {
+      setError("Invalid username or password");
+      setIsLoading(false);
+    }
   };
 
   return (

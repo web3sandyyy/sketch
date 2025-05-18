@@ -5,6 +5,7 @@ import {
   CarouselImage,
   CanvasImage,
   Testimonial,
+  Admin,
 } from "@/types";
 const supabase = createClient();
 
@@ -245,6 +246,34 @@ export const deleteTestimonials = async (
     return { data: data[0], error: null, status: "success" };
   } catch (error) {
     console.error("Unexpected error in deleteTestimonials:", error);
+    return {
+      data: null,
+      error: "An unexpected error occurred",
+      status: "error",
+    };
+  }
+};
+  
+export const verifyAdmin = async (
+  username: string,
+  password: string
+): Promise<ApiResponse<Admin>> => {
+  try {
+    const { data, error } = await supabase
+      .from("admin")
+      .select("*")
+      .eq("username", username)
+      .eq("password", password);
+
+
+    if (error) {
+      console.error("Error verifying admin:", error);
+      return { data: null, error: error.message, status: "error" };
+    }
+
+    return { data: data, error: null, status: "success" };
+  } catch (error) {
+    console.error("Unexpected error in verifyAdmin:", error);
     return {
       data: null,
       error: "An unexpected error occurred",

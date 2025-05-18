@@ -25,3 +25,8 @@ export interface Testimonial {
   name: string;
   review: string;
 }
+
+export interface Admin {
+  username: string;
+  password: string;
+}
