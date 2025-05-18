@@ -9,11 +9,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { uploadImage } from "@/utils/supabase/storage";
-import { getSketchGrid } from "@/utils/supabase/apis";
+import { getSketchGrid, postSketchGrid } from "@/utils/supabase/apis";
 import { toast } from "sonner";
 
 interface ImagePair {
-  id?: number;
+  id: number;
   sketch: string;
   original: string;
 }
@@ -33,18 +33,13 @@ const SketchSectionAdmin = () => {
   }, []);
 
   const fetchSketchGrid = async () => {
-    try {
-      const { data, error } = await getSketchGrid();
-      if (error) {
-        toast.error("Failed to fetch sketch grid data");
-        return;
-      }
-      setWorkImages(data || []);
-    } catch (error) {
-      toast.error("Failed to fetch sketch grid data");
-    } finally {
-      setIsLoading(false);
+    const { data, error } = await getSketchGrid();
+    if (error) {
+      toast.error(error);
+      return;
     }
+    setWorkImages(data || []);
+    setIsLoading(false);
   };
 
   const handleImageChange = async (index: number) => {
@@ -66,7 +61,10 @@ const SketchSectionAdmin = () => {
   };
 
   const handleSubmit = async () => {
-    if (!newSketch || !newOriginal || selectedPairIndex === null) return;
+    if (!newSketch || !newOriginal || selectedPairIndex === null) {
+      toast.error("Please select both images and a position");
+      return;
+    }
 
     setIsUploading(true);
     try {
@@ -82,6 +80,20 @@ const SketchSectionAdmin = () => {
         throw new Error("Failed to upload images");
       }
 
+      const { data, error } = await postSketchGrid(
+        sketchResult.imageUrl,
+        originalResult.imageUrl,
+        selectedPairIndex
+      );
+
+      if (error) {
+        throw new Error(error);
+      }
+
+      if (!data) {
+        throw new Error("No data returned from update");
+      }
+
       const newImages = [...workImages];
       newImages[selectedPairIndex] = {
         ...newImages[selectedPairIndex],
@@ -89,14 +101,19 @@ const SketchSectionAdmin = () => {
         original: originalResult.imageUrl,
       };
       setWorkImages(newImages);
-      toast.success("Images updated successfully");
-    } catch (error) {
-      toast.error("Failed to update images");
-    } finally {
-      setIsUploading(false);
+
       setNewSketch(null);
       setNewOriginal(null);
       setSelectedPairIndex(null);
+
+      toast.success("Images updated successfully");
+    } catch (error) {
+      console.error("Error updating images:", error);
+      toast.error(
+        error instanceof Error ? error.message : "Failed to update images"
+      );
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -141,7 +158,7 @@ const SketchSectionAdmin = () => {
                   <Button
                     variant="outline"
                     className="w-full"
-                    onClick={() => handleImageChange(index)}
+                    onClick={() => handleImageChange(img.id)}
                   >
                     Change Images
                   </Button>

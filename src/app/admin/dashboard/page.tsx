@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import SketchSectionAdmin from "@/components/admin/SketchSectionAdmin";
+import SketchCarouselAdmin from "@/components/admin/SketchCarouselAdmin";
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -23,7 +24,8 @@ export default function AdminDashboard() {
           Logout
         </button>
       </div>
-      <SketchSectionAdmin />
+      {/* <SketchSectionAdmin />  */}
+      <SketchCarouselAdmin />
     </div>
   );
 }
