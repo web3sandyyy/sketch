@@ -1,4 +1,4 @@
-import MehendiCarousel from "./MehendiCarousel";
+import CanvasCarousel from "./CanvasCarousel";
 import mehendi from "@/assets/mehendi.jpeg";
 
 const mehendiImages = [
@@ -11,7 +11,7 @@ const mehendiImages = [
   mehendi,
 ];
 
-export default function MehendiSection() {
+export default function CanvasSection() {
   return (
     <section id="mehendi" className="w-full max-w-5xl mx-auto py-12 px-4">
       <h2 className="text-2xl font-semibold mb-2">Canvas Arts</h2>
@@ -20,7 +20,7 @@ export default function MehendiSection() {
         beauty, and joy. Let your hands tell a story with intricate, personalized
         designs for every occasion.
       </p>
-      <MehendiCarousel images={mehendiImages} />
+      <CanvasCarousel images={mehendiImages} />
     </section>
   );
 }

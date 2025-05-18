@@ -1,11 +1,11 @@
 import HeroSection from "@/components/HeroSection";
 import SketchSection from "@/components/SketchSection";
-import MehendiSection from "@/components/MehendiSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FooterSection from "@/components/FooterSection";
 import Header from "@/components/Header";
 import FloatingButtons from "@/components/FloatingWhatsapp";
 import Classes from "@/components/Classes";
+import CanvasSection from "@/components/CanvasSection";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="flex flex-col bg-white">
         <HeroSection />
         <SketchSection />
-        <MehendiSection />
+        <CanvasSection />
         <Classes />
         <TestimonialsSection />
         <FooterSection />

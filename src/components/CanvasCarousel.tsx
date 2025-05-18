@@ -8,7 +8,7 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 
-export default function MehendiCarousel({ images }: { images: any[] }) {
+export default function CanvasCarousel({ images }: { images: any[] }) {
   return (
     <div className="w-full">
       <Carousel className="w-full" opts={{ align: "start" }}>
