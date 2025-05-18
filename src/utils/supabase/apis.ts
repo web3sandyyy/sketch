@@ -4,6 +4,7 @@ import {
   SketchGridItem,
   CarouselImage,
   CanvasImage,
+  Testimonial,
 } from "@/types";
 const supabase = createClient();
 
@@ -38,7 +39,7 @@ export const getCanvasCarousel = () => {
 };
 
 export const getReviews = () => {
-  return getData("reviews");
+  return getData<Testimonial>("reviews");
 };
 
 // POST APIS
@@ -193,12 +194,13 @@ export const deleteCanvasCarousel = async (
 };
 
 export const postTestimonials = async (
-  testimonial: string
-): Promise<ApiResponse<any>> => {
+  name: string,
+  review: string
+): Promise<ApiResponse<Testimonial>> => {
   try {
     const { data, error } = await supabase
-      .from("testimonials")
-      .insert({ testimonial })
+      .from("reviews")
+      .insert({ name, review })
       .select();
 
     if (error) {
@@ -210,7 +212,7 @@ export const postTestimonials = async (
       return { data: null, error: "Failed to insert record", status: "error" };
     }
 
-    return { data: data[0], error: null, status: "success" };
+    return { data: [data[0]], error: null, status: "success" };
   } catch (error) {
     console.error("Unexpected error in postTestimonials:", error);
     return {

@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import SketchSectionAdmin from "@/components/admin/SketchSectionAdmin";
 import SketchCarouselAdmin from "@/components/admin/SketchCarouselAdmin";
 import CanvasCarouselAdmin from "@/components/admin/CanvasCarouselAdmin";
+import TestimonialsAdmin from "@/components/admin/TestimonialsAdmin";
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -27,7 +28,8 @@ export default function AdminDashboard() {
       </div>
       {/* <SketchSectionAdmin />  */}
       {/* <SketchCarouselAdmin /> */}
-      <CanvasCarouselAdmin />
+      {/* <CanvasCarouselAdmin /> */}
+      <TestimonialsAdmin />
     </div>
   );
 }

@@ -19,3 +19,9 @@ export interface CanvasImage {
   id: number;
   canvas: string;
 }
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  review: string;
+}
