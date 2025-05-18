@@ -9,7 +9,7 @@ function getStorage() {
 
 type UploadProps = {
   file: File;
-  bucket: string;
+  bucket?: string;
   folder?: string;
   maxSizeMB?: number;
   maxWidthOrHeight?: number;

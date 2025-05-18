@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Lexend_Deca } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { ToasterProvider } from "@/components/ToasterProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -88,6 +89,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${lexendDeca.variable} antialiased`}
       >
         {children}
+        <ToasterProvider />
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -115,13 +117,14 @@ export default function RootLayout({
                   "Thursday",
                   "Friday",
                   "Saturday",
+                  "Sunday",
                 ],
                 opens: "10:00",
                 closes: "19:00",
               },
               sameAs: [
                 "https://www.instagram.com/anusketchart/",
-                "https://wa.me/9152345333",
+                "https://wa.me/9152345333/?text=hello%20Anu,%20I%20had%20some%20queries%20regarding%20the%20sketch%20and%20canvas%20painting!",
               ],
             }),
           }}
