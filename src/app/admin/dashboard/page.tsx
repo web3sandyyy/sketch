@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import SketchSectionAdmin from "@/components/admin/SketchSectionAdmin";
 import SketchCarouselAdmin from "@/components/admin/SketchCarouselAdmin";
+import CanvasCarouselAdmin from "@/components/admin/CanvasCarouselAdmin";
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -25,7 +26,8 @@ export default function AdminDashboard() {
         </button>
       </div>
       {/* <SketchSectionAdmin />  */}
-      <SketchCarouselAdmin />
+      {/* <SketchCarouselAdmin /> */}
+      <CanvasCarouselAdmin />
     </div>
   );
 }

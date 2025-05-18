@@ -1,5 +1,10 @@
 import { createClient } from "./client";
-import { ApiResponse, SketchGridItem, CarouselImage } from "@/types";
+import {
+  ApiResponse,
+  SketchGridItem,
+  CarouselImage,
+  CanvasImage,
+} from "@/types";
 const supabase = createClient();
 
 const getData = async <T>(table: string): Promise<ApiResponse<T>> => {
@@ -29,7 +34,7 @@ export const getSketchCarousel = () => {
 };
 
 export const getCanvasCarousel = () => {
-  return getData("canvascarousel");
+  return getData<CanvasImage>("canvascarousel");
 };
 
 export const getReviews = () => {
@@ -71,7 +76,7 @@ export const postSketchGrid = async (
 
 export const postSketchCarousel = async (
   sketch: string
-): Promise<ApiResponse<any>> => {
+): Promise<ApiResponse<CarouselImage>> => {
   try {
     const { data, error } = await supabase
       .from("sketchcarousel")
@@ -87,7 +92,7 @@ export const postSketchCarousel = async (
       return { data: null, error: "Failed to insert record", status: "error" };
     }
 
-    return { data: data[0], error: null, status: "success" };
+    return { data: [data[0]], error: null, status: "success" };
   } catch (error) {
     console.error("Unexpected error in postSketchCarousel:", error);
     return {
@@ -130,7 +135,7 @@ export const deleteSketchCarousel = async (
 
 export const postCanvasCarousel = async (
   canvas: string
-): Promise<ApiResponse<any>> => {
+): Promise<ApiResponse<CanvasImage>> => {
   try {
     const { data, error } = await supabase
       .from("canvascarousel")
@@ -146,7 +151,7 @@ export const postCanvasCarousel = async (
       return { data: null, error: "Failed to insert record", status: "error" };
     }
 
-    return { data: data[0], error: null, status: "success" };
+    return { data: [data[0]], error: null, status: "success" };
   } catch (error) {
     console.error("Unexpected error in postCanvasCarousel:", error);
     return {

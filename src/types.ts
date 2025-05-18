@@ -14,3 +14,8 @@ export interface CarouselImage {
   id: number;
   sketch: string;
 }
+
+export interface CanvasImage {
+  id: number;
+  canvas: string;
+}
