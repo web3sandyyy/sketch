@@ -14,6 +14,8 @@ import {
 } from "@/utils/supabase/apis";
 import { Testimonial } from "@/types";
 import { toast } from "sonner";
+import AdminHeader from "@/components/admin/AdminHeader";
+import ImageSkeleton from "@/components/admin/ImageSkeleton";
 
 export default function ReviewsPage() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
@@ -96,84 +98,97 @@ export default function ReviewsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Reviews Management</h1>
-        <Link href="/admin/dashboard">
-          <Button variant="outline">Back to Dashboard</Button>
-        </Link>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <AdminHeader title="Reviews Management" />
 
-      {isLoading ? (
-        <div className="flex items-center justify-center h-64">
-          <p className="text-gray-500">Loading...</p>
-        </div>
-      ) : (
-        <div className="w-full max-w-5xl mx-auto">
-          <h2 className="text-2xl font-semibold mb-2">Manage Reviews</h2>
-          <p className="mb-6 text-gray-500">
-            Add and manage customer reviews. Maximum of {MAX_TESTIMONIALS}{" "}
-            reviews allowed.
-          </p>
+      <div className="p-4 sm:p-6 md:p-8">
+        {isLoading ? (
+          <ImageSkeleton count={3} aspectRatio="review" />
+        ) : (
+          <div className="w-full max-w-5xl mx-auto">
+            <div className="mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">
+                Manage Reviews
+              </h2>
+              <p className="text-gray-500 text-sm sm:text-base">
+                Add and manage customer reviews. Maximum of {MAX_TESTIMONIALS}{" "}
+                reviews allowed.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 gap-6 mb-8">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.id} className="p-6">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                  <div>
-                    <h3 className="font-semibold text-lg">
-                      {testimonial.name}
-                    </h3>
-                    <p className="mt-2 text-gray-700">{testimonial.review}</p>
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 mb-6 sm:mb-8">
+              {testimonials.map((testimonial) => (
+                <Card key={testimonial.id} className="p-4 sm:p-6">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4">
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg">
+                        {testimonial.name}
+                      </h3>
+                      <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-700">
+                        {testimonial.review}
+                      </p>
+                    </div>
+                    <Button
+                      variant="destructive"
+                      onClick={() => handleDelete(testimonial.id)}
+                      className="shrink-0 text-xs sm:text-sm"
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {testimonials.length < MAX_TESTIMONIALS && (
+              <Card className="p-4 sm:p-6">
+                <h3 className="text-lg font-semibold mb-3 sm:mb-4">
+                  Add New Review
+                </h3>
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-3 sm:space-y-4"
+                >
+                  <div className="space-y-1 sm:space-y-2">
+                    <Label htmlFor="name" className="text-sm">
+                      Customer Name
+                    </Label>
+                    <Input
+                      id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Enter customer name"
+                      required
+                      className="text-sm"
+                    />
+                  </div>
+                  <div className="space-y-1 sm:space-y-2">
+                    <Label htmlFor="review" className="text-sm">
+                      Review
+                    </Label>
+                    <Textarea
+                      id="review"
+                      value={review}
+                      onChange={(e) => setReview(e.target.value)}
+                      placeholder="Enter customer review"
+                      rows={4}
+                      required
+                      className="text-sm"
+                    />
                   </div>
                   <Button
-                    variant="destructive"
-                    onClick={() => handleDelete(testimonial.id)}
-                    className="shrink-0"
+                    type="submit"
+                    disabled={isSubmitting || !name.trim() || !review.trim()}
+                    className="text-xs sm:text-sm"
                   >
-                    Delete
+                    {isSubmitting ? "Adding..." : "Add Review"}
                   </Button>
-                </div>
+                </form>
               </Card>
-            ))}
+            )}
           </div>
-
-          {testimonials.length < MAX_TESTIMONIALS && (
-            <Card className="p-6">
-              <h3 className="text-lg font-semibold mb-4">Add New Review</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Customer Name</Label>
-                  <Input
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter customer name"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="review">Review</Label>
-                  <Textarea
-                    id="review"
-                    value={review}
-                    onChange={(e) => setReview(e.target.value)}
-                    placeholder="Enter customer review"
-                    rows={4}
-                    required
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  disabled={isSubmitting || !name.trim() || !review.trim()}
-                >
-                  {isSubmitting ? "Adding..." : "Add Review"}
-                </Button>
-              </form>
-            </Card>
-          )}
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

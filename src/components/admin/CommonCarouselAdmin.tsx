@@ -102,14 +102,22 @@ function CommonCarouselAdmin<T>({
   };
 
   return (
-    <section className="w-full max-w-5xl mx-auto py-12 px-4">
-      <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-      <p className="mb-6 text-gray-500">{description}</p>
+    <div className="w-full">
+      {title && (
+        <>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">
+            {title}
+          </h2>
+          <p className="mb-4 sm:mb-6 text-gray-500 text-sm sm:text-base">
+            {description}
+          </p>
+        </>
+      )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
         {images.map((img) => (
-          <Card key={String(img[idKey])} className="p-4">
-            <div className="space-y-4">
+          <Card key={String(img[idKey])} className="p-3 sm:p-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="aspect-square relative">
                 <img
                   src={String(img[imageKey])}
@@ -119,7 +127,7 @@ function CommonCarouselAdmin<T>({
               </div>
               <Button
                 variant="destructive"
-                className="w-full"
+                className="w-full text-xs sm:text-sm"
                 onClick={() => handleDeleteImage(Number(img[idKey]))}
               >
                 Remove Image
@@ -129,35 +137,39 @@ function CommonCarouselAdmin<T>({
         ))}
 
         {images.length < maxImages && (
-          <Card className="p-4">
-            <div className="space-y-4">
+          <Card className="p-3 sm:p-4">
+            <div className="space-y-3 sm:space-y-4">
               <Dialog>
                 <DialogTrigger asChild>
                   <Button
                     variant="outline"
-                    className="w-full h-full min-h-[200px]"
+                    className="w-full h-full min-h-[150px] sm:min-h-[200px] text-xs sm:text-sm"
                   >
                     Add New Image
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="sm:max-w-md">
                   <DialogHeader>
-                    <DialogTitle>Add New Image</DialogTitle>
+                    <DialogTitle className="text-lg sm:text-xl">
+                      Add New Image
+                    </DialogTitle>
                   </DialogHeader>
-                  <div className="space-y-4 py-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Image</label>
+                  <div className="space-y-3 sm:space-y-4 py-3 sm:py-4">
+                    <div className="space-y-1 sm:space-y-2">
+                      <label className="text-xs sm:text-sm font-medium">
+                        Image
+                      </label>
                       <input
                         type="file"
                         accept="image/*"
                         onChange={handleFileSelect}
-                        className="w-full"
+                        className="w-full text-xs sm:text-sm"
                       />
                     </div>
                     <Button
                       onClick={handleAddImage}
                       disabled={!newImage || isUploading}
-                      className="w-full"
+                      className="w-full text-xs sm:text-sm"
                     >
                       {isUploading ? "Uploading..." : "Add Image"}
                     </Button>
@@ -168,7 +180,7 @@ function CommonCarouselAdmin<T>({
           </Card>
         )}
       </div>
-    </section>
+    </div>
   );
 }
 

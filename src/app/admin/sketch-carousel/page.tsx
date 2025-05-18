@@ -11,6 +11,8 @@ import {
   postSketchCarousel,
   deleteSketchCarousel,
 } from "@/utils/supabase/apis";
+import AdminHeader from "@/components/admin/AdminHeader";
+import ImageSkeleton from "@/components/admin/ImageSkeleton";
 
 export default function SketchCarouselPage() {
   const [carouselImages, setCarouselImages] = useState<CarouselImage[]>([]);
@@ -31,33 +33,38 @@ export default function SketchCarouselPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">
-          Sketch Carousel Management
-        </h1>
-        <Link href="/admin/dashboard">
-          <Button variant="outline">Back to Dashboard</Button>
-        </Link>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <AdminHeader title="Sketch Carousel Management" />
 
-      {isLoading ? (
-        <div className="flex items-center justify-center h-64">
-          <p className="text-gray-500">Loading...</p>
-        </div>
-      ) : (
-        <CommonCarouselAdmin
-          title="Manage Sketch Carousel"
-          description="Upload and manage sketch carousel images. Maximum of 10 images allowed."
-          images={carouselImages}
-          imageKey="sketch"
-          idKey="id"
-          folder="sketchcarousel"
-          onAdd={postSketchCarousel}
-          onDelete={deleteSketchCarousel}
-          onImagesChange={setCarouselImages}
-        />
-      )}
+      <div className="p-4 sm:p-6 md:p-8">
+        {isLoading ? (
+          <ImageSkeleton count={6} aspectRatio="carousel" />
+        ) : (
+          <div className="w-full max-w-5xl mx-auto">
+            <div className="mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">
+                Manage Sketch Carousel
+              </h2>
+              <p className="text-gray-500 text-sm sm:text-base">
+                Upload and manage sketch carousel images. Maximum of 10 images
+                allowed.
+              </p>
+            </div>
+
+            <CommonCarouselAdmin
+              title=""
+              description=""
+              images={carouselImages}
+              imageKey="sketch"
+              idKey="id"
+              folder="sketchcarousel"
+              onAdd={postSketchCarousel}
+              onDelete={deleteSketchCarousel}
+              onImagesChange={setCarouselImages}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
