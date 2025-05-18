@@ -28,6 +28,8 @@ const FloatingButton = ({
       href={href}
       className="overflow-hidden flex rounded-full relative"
       target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
     >
       <motion.div
         initial={{ translateX: "100%" }}
@@ -38,33 +40,35 @@ const FloatingButton = ({
           ease: "easeInOut",
           repeat: Infinity,
         }}
-        className={`h-full flex items-center justify-center right-10 p-2 pl-4 rounded-l-full pr-12 ${bgClass}`}
+        className={`h-full flex items-center justify-center right-10 p-2 pl-3 sm:pl-4 rounded-l-full pr-10 sm:pr-12 ${bgClass}`}
       >
-        <p className="text-nowrap text-center text-white font-semibold">
+        <p className="text-nowrap text-center text-white font-semibold text-xs sm:text-sm">
           {label}
         </p>
       </motion.div>
-      <Image
-        src={image}
-        width={50}
-        height={50}
-        className="w-10 h-10 z-20 absolute right-0"
-        alt={alt}
-      />
+      <div className="w-8 h-8 sm:w-10 sm:h-10 z-20 absolute right-0 flex items-center justify-center">
+        <Image
+          src={image}
+          width={40}
+          height={40}
+          className="w-6 h-6 sm:w-8 sm:h-8"
+          alt={alt}
+        />
+      </div>
     </Link>
   </div>
 );
 
 const FloatingButtons = () => {
   return (
-    <div className="fixed bottom-0 right-0 m-4 z-50 flex flex-col gap-2 items-end">
+    <div className="fixed bottom-0 right-0 m-3 sm:m-4 z-50 flex flex-col gap-2 items-end">
       <FloatingButton
         href={instagramUrl}
         image={instagram}
         alt="Instagram"
         label="Follow us"
         bgClass="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600"
-        style={{ marginBottom: 12 }}
+        style={{ marginBottom: 8 }}
       />
       <FloatingButton
         href={phoneNumber}

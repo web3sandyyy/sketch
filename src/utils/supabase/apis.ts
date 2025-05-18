@@ -11,7 +11,7 @@ const supabase = createClient();
 
 const getData = async <T>(table: string): Promise<ApiResponse<T>> => {
   try {
-    const { data, error } = await supabase.from(table).select("*");
+    const { data, error } = await supabase.from(table).select("*").order('id', { ascending: false });;
     if (error) {
       console.error(`Error fetching from ${table}:`, error);
       return { data: null, error: error.message, status: "error" };
@@ -229,7 +229,7 @@ export const deleteTestimonials = async (
 ): Promise<ApiResponse<any>> => {
   try {
     const { data, error } = await supabase
-      .from("testimonials")
+      .from("reviews")
       .delete()
       .eq("id", id)
       .select();

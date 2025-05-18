@@ -131,3 +131,17 @@
     font-family: var(--font-poppins);
   }
 }
+
+.background-wrapper {
+  background-image: url('/classesBg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Responsive image for larger screens */
+@media (min-width: 768px) {
+  .background-wrapper {
+    background-image: url('/classesBg-large.jpg');
+  }
+}
